@@ -1,0 +1,29 @@
+<%= simple_form_for(courier) do |f| %>
+  <% if courier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(courier.errors.count, "error") %> prohibited this courier from being saved:</h2>
+
+      <ul>
+        <% courier.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    <%= f.input :name %>
+  </div>
+
+  <div class="field">
+   
+    <%= f.input :email %>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= f.button :submit, "Push", class: "btn  btn-primary" %>
+    <%= link_to 'Back', couriers_path, class: "btn btn-dark" %>
+  </div>
+<% end %>

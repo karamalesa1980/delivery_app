@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div class=container>
+  <h1 class="text-center">Couriers</h1>
+  <table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Show</th>
+        <th>Editing</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <% order = 0 %>
+    <tbody>
+      <% @couriers.each do |courier| %>        
+        <tr>
+          <td><%= order += 1 %></td>
+          <td><%= courier.name %></td>
+          <td><%= courier.email %></td>
+          <td><%= link_to 'Show', courier , class: "btn btn-info"%></td>
+          <td><%= link_to 'Edit', edit_courier_path(courier), class: "btn btn-success"%></td>
+          <td><%= link_to 'Delete', courier, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Courier', new_courier_path, class: "btn btn-primary" %>
+</div>
+
+
+

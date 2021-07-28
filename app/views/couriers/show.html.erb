@@ -1,0 +1,52 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        <strong>Name:</strong>
+        <%= @courier.name %> \
+        <strong>Email:</strong>
+        <%= @courier.email %>
+      </p>
+    </div>
+  </div>
+  
+  <br>
+  <div><h2 class="text-center">New package!</h2></div>
+
+  <%= simple_form_for([@courier, @courier.packages.build]) do |f| %>	
+    <p>	
+      <%= f.input :tracking_number, :class => 'form-control' %>
+    </p>
+    <p>	
+      <%= f.input :delivery_status, :class => 'form-control' %>
+    </p>
+    <p>		
+      <%= f.submit "Create package", :class => 'btn btn-primary' %>
+      <%= link_to 'Back', couriers_path, class: "btn btn-dark" %>
+    </p>
+  <% end %>
+  <br>
+  <table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Tracking_number</th>
+      <th>delivery_status</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courier.packages.each do |package| %>      
+      <tr>
+        <td><%= package.id%></td>
+        <td><%= package.tracking_number %></td>
+        <td><%= package.delivery_status %></td>
+        <td><%= package.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+	
+    
+</div>
